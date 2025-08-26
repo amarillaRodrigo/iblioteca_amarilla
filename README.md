@@ -15,26 +15,30 @@ Ademas se pueden validar los valores que se asignan a las propiedades.
 5. Funcion con parametros obligatorios y opcionales
 
 ```ts
-function saludar(nombre: string, edad?: number): void {
-  console.log(`Hola ${nombre}` + (edad ? `, tenés ${edad} años` : ""));
+function calcularArea(base: number, altura?: number): number {
+  if (altura) {
+    return base * altura;
+  }
+  return base * base;
 }
 
-saludar("Rodri");
-saludar("Rodri", 24);
+console.log(calcularArea(5));      
+console.log(calcularArea(5, 10));  
 
 ```
 
 Funcion que devuelve una Promise
 
 ```ts
-function obtenerDatos(id: number): Promise<string> {
+function sumarAsync(a: number, b: number): Promise<number> {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`Datos del id ${id}`);
-    }, 1000);
+    resolve(a + b);
   });
 }
 
-obtenerDatos(1).then(console.log);
+sumarAsync(3, 7).then(resultado => {
+  console.log(`Resultado: ${resultado}`);
+});
+
 
 ```
